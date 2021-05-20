@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Search</title>
+        <link rel="icon" href="/img/book.png" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+        <div class="main-content">
+            {{>header}}
+
+            <p>Use this site to search for free books!</p>
+
+            <form>
+                <input placeholder="The theory of everything">
+                <button>Search</button>
+            </form>
+
+            <p id="message-1"></p>
+            <p id="message-2"></p>
+        </div>      
+        {{>footer}}
+
+        <script src="/js/app.js"></script>
+    </body>
+</html>

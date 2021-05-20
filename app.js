@@ -1,13 +1,47 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const searchBook = require('./public/www.free-ebooks.net');
-const searchBible = require('./public/searchBible');
-const bibleBooks = require('./public/allBooksBible');
+const hbs = require('hbs')
+const path = require('path')
+const searchBook = require('./src/www.free-ebooks.net');
+const searchBible = require('./src/searchBible');
+const bibleBooks = require('./src/allBooksBible');
 
 const app = express();
 const port = process.env.PORT || 8081;
 
-app.use(express.static(__dirname + '/public'));
+const publicDirectoryPath = path.join(__dirname, './public')
+const viewsPath = path.join(__dirname, './templates/views')
+const partialsPath = path.join(__dirname, './templates/partials')
+
+// Setup handlebars engine and views location
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+// Setup static directory to serve
+app.use(express.static(publicDirectoryPath))
+
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Search Books',
+        name: 'Anthony Reis'
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'Search Books',
+        name: 'Anthony Reis'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        title: 'Search Books',
+        name: 'Anthony Reis',
+        email: 'matheus.anthony1@gmail.com'
+    })
+})
 
 app.get('/searchBook', async (req, res) => {
     try {
@@ -37,7 +71,11 @@ app.get('/bibleVerse', async (req, res) => {
 })
 
 app.get('/*', (req, res) => {
-    res.send('404 - Page Not Found');
+    res.render('404', {
+        title: '404',
+        error: 'Page not found',
+        name: 'Anthony Reis'
+    })
 })
 
 app.listen(port, () => {
