@@ -5,6 +5,7 @@ const path = require('path')
 const searchBook = require('./src/www.free-ebooks.net');
 const searchArchive = require('./src/bookboon.com');
 const searchPdf = require('./src/archive.org');
+const searchMany = require('./src/manybooks.net');
 const searchBible = require('./src/searchBible');
 const bibleBooks = require('./src/allBooksBible');
 
@@ -51,9 +52,20 @@ app.get('/searchBook', async (req, res) => {
         const response1 = await searchBook(req.query.bookInfo);
         const response2 = await searchArchive(req.query.bookInfo);
         const response3 = await searchPdf(req.query.bookInfo);
+        const response4 = await searchMany(req.query.bookInfo);
         const response = [
-            ...response1.data,...response2.data, ...response3.data
+            ...response1.data,...response2.data, ...response3.data, ...response4.data
         ]
+        res.send(response)
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+app.get('/searchMany', async (req, res) => {
+    try {
+        const response = await searchMany(req.query.bookInfo);
+       
         res.send(response)
     } catch (err) {
         res.send(err)
