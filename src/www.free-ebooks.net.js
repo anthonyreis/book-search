@@ -1,13 +1,12 @@
 const axios = require('axios');
-const urls = require('../utils/urls');
 const fs = require('fs/promises');
+const url = 'https://www.free-ebooks.net/'
 
 const bookLink = (bookHTML) => {
     var matches;        
     var re = /<h3 class="tlc"><a href=/g;
     var pos = new Array();
     var uri = new Array();
-    let newHTML = bookHTML;
 
     while (matches = re.exec(bookHTML)) {
         if (matches.index === re.lastIndex)
@@ -16,21 +15,11 @@ const bookLink = (bookHTML) => {
         pos.push(re.lastIndex);
     }
 
-    /*pos.forEach((item, index) => {
-        if (index == 0) {
-            var pos1 = bookHTML.indexOf('"', item)
-            newHTML = `${newHTML.substr(0, pos1+1)}www.free-ebooks.net${newHTML.substr(pos1+1)}`
-        } else {
-            var pos1 = newHTML.indexOf('"', item+(index * 19))
-            newHTML = `${newHTML.substr(0, pos1+1)}www.free-ebooks.net${newHTML.substr(pos1+1)}`
-        }
-    })*/
-
     pos.forEach((item) => {
         var pos1 = bookHTML.indexOf('"', item)
         var pos2 = bookHTML.indexOf('"', pos1+2)
 
-        uri.push(`www.free-ebooks.net${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
+        uri.push(`${url}${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
     })
 
     return uri;
@@ -38,8 +27,8 @@ const bookLink = (bookHTML) => {
 
 const searchBook = async (bookInformation) => {
     try {
-        url = `${urls[0]}search/${bookInformation}`;
-        const response = await axios.get(url);
+        fullUrl = `${url}search/${bookInformation}`;
+        const response = await axios.get(fullUrl);
 
         const lineBegin = response.data.search('<h3 class="tlc">')
         const lineEnd = response.data.lastIndexOf('3"></div>')
