@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const hbs = require('hbs')
 const path = require('path')
 const searchBook = require('./src/www.free-ebooks.net');
+const searchArchive = require('./src/https:/bookboon.com');
 const searchBible = require('./src/searchBible');
 const bibleBooks = require('./src/allBooksBible');
 
@@ -45,7 +46,20 @@ app.get('/help', (req, res) => {
 
 app.get('/searchBook', async (req, res) => {
     try {
-        const response = await searchBook(req.query.bookInfo);
+        const response1 = await searchBook(req.query.bookInfo);
+        const response2 = await searchArchive(req.query.bookInfo);
+        const response = [
+            ...response1.data,...response2.data,
+        ]
+        res.send(response)
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+app.get('/searchArchive', async (req, res) => {
+    try {
+        const response = await searchArchive(req.query.bookInfo);
         
         res.send(response.data)
     } catch (err) {
