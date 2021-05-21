@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const path = require('path')
 const searchBook = require('./src/www.free-ebooks.net');
 const searchArchive = require('./src/bookboon.com');
+const searchPdf = require('./src/archive.org');
 const searchBible = require('./src/searchBible');
 const bibleBooks = require('./src/allBooksBible');
 
@@ -17,6 +18,7 @@ const partialsPath = path.join(__dirname, './templates/partials')
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
+app.disable('x-powered-by');
 hbs.registerPartials(partialsPath)
 
 // Setup static directory to serve
@@ -48,8 +50,9 @@ app.get('/searchBook', async (req, res) => {
     try {
         const response1 = await searchBook(req.query.bookInfo);
         const response2 = await searchArchive(req.query.bookInfo);
+        const response3 = await searchPdf(req.query.bookInfo);
         const response = [
-            ...response1.data,...response2.data,
+            ...response1.data,...response2.data, ...response3.data
         ]
         res.send(response)
     } catch (err) {

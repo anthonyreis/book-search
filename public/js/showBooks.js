@@ -1,10 +1,10 @@
-const weatherForm = document.querySelector('form')
+const main = document.querySelector('.main-content')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 
 
-weatherForm.addEventListener('submit', (e) => {
+main.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const bookInfo = search.value
@@ -17,17 +17,18 @@ weatherForm.addEventListener('submit', (e) => {
             if (data.error){
                 var par = document.createElement('p')
                 par.textContent = data.error
-                document.body.appendChild(par)
+                main.appendChild(par)
             } else {
                 urls.forEach((item) => {
                     var par = document.createElement('a')
                     par.href = item
                     par.innerText = item
                     par.target = '_blank'
-                    document.body.appendChild(par)
+                    main.appendChild(par)
                     var par = document.createElement('br')
-                    document.body.appendChild(par)
+                    main.appendChild(par)
                 })
+                messageOne.textContent = ''
             }
         })
     })
