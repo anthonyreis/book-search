@@ -46,7 +46,8 @@ app.get('/help', (req, res) => {
 app.get('/searchBook', async (req, res) => {
     try {
         const response = await searchBook(req.query.bookInfo);
-        // res.status(response.status_code).send(response.data)
+        
+        res.send(response.data)
     } catch (err) {
         res.send(err)
     }
