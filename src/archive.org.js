@@ -1,5 +1,4 @@
 const axios = require('axios');
-const _ = require('lodash')
 const fs = require('fs/promises');
 const url = 'https://archive.org/'
 
@@ -7,9 +6,6 @@ const bookLink = (bookHTML) => {
     var matches;        
     var re = /<a href="\/details/g;
     var pos = new Array();
-    var uri = new Array();
-    var img = new Array();
-    var title = new Array();
     var books = new Array();
 
     while (matches = re.exec(bookHTML)) {
@@ -30,16 +26,7 @@ const bookLink = (bookHTML) => {
             bookName: bookHTML.substr(pos3+1, (pos4 - pos3)-1),
         }
         books.push(book)
-        /*uri.push(`${url}details/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
-        img.push(`${url}services/img/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
-        title.push(bookHTML.substr(pos3+1, (pos4 - pos3)-1))*/
     })
-    
-    /*return {
-        uri,
-        img,
-        title
-    }*/
 
     return books
 }
