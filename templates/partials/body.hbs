@@ -1,0 +1,41 @@
+<body>
+    {{> header}}
+
+    <div class="main-content">
+        <p>Use this site to search for free books!</p>
+
+        <form>
+            <input placeholder="The theory of everything">
+            <button>Search</button>
+        </form>
+
+        <p id="message-1"></p>
+    </div>
+
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                {{#each data}}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src={{this.imgSrc}}>
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.bookName}}</h5>
+                                <!--<p class="card-text">{{this.bookDescription}}</p> -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href={{this.bookLink}} class="btn btn-primary my-2">Completo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </main>
+    {{> footer}}
+    <!--<script src="/js/showBooks.js"></script> -->
+</body>

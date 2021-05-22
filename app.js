@@ -19,7 +19,6 @@ const partialsPath = path.join(__dirname, './templates/partials')
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
-app.disable('x-powered-by');
 hbs.registerPartials(partialsPath)
 
 // Setup static directory to serve
@@ -56,16 +55,22 @@ app.get('/searchBook', async (req, res) => {
         const response = [
             ...response1.data,...response2.data, ...response3.data, ...response4.data
         ]
-        res.send(response)
+        
+        res.render('books', {
+            title: 'Search Books',
+            name: 'Anthony Reis',
+            data: response
+        })
+        //res.send(response)
     } catch (err) {
         res.send(err)
     }
 })
 
-app.get('/searchMany', async (req, res) => {
+app.get('/searchPdf', async (req, res) => {
     try {
-        const response = await searchMany(req.query.bookInfo);
-       
+        const response = await searchBook(req.query.bookInfo);
+
         res.send(response)
     } catch (err) {
         res.send(err)
