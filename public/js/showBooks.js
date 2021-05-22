@@ -1,7 +1,6 @@
 const main = document.querySelector('.main-content')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
-const messageTwo = document.querySelector('#message-2')
 
 
 main.addEventListener('submit', (e) => {
