@@ -1,14 +1,4 @@
-<body>
-    <div class="main-content">
-            <p>Use this site to search for free books!</p>
-
-            <form>
-                <input placeholder="The theory of everything">
-                <button>Search</button>
-            </form>
-
-            <p id="message-1"></p>
-    </div>   
+<body>   
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
             <div class="container">
@@ -35,7 +25,7 @@
                             </symbol>
                         </use>
                     </svg>
-                    <strong>Books</strong>
+                    <strong>Search Books</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                     aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +34,18 @@
             </div>
         </div>
     </header>
+    {{> header}}
+
+    <div class="main-content">
+            <p>Use this site to search for free books!</p>
+
+            <form>
+                <input placeholder="The theory of everything">
+                <button>Search</button>
+            </form>
+
+            <p id="message-1"></p>
+    </div>
 
     <main role="main">
 
@@ -82,7 +84,7 @@
                 </div>
             </div>
         </div>
-        {{>footer}}
+        {{> footer}}
 
     </main>
     <script src="/js/showBooks.js"></script>

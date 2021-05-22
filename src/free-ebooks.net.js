@@ -19,7 +19,7 @@ const bookLink = (bookHTML) => {
         var pos1 = bookHTML.indexOf('"', item)
         var pos2 = bookHTML.indexOf('"', pos1+2)
 
-        uri.push(`${url}${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
+        uri.push(`${url}${bookHTML.substr(pos1+2, (pos2 - pos1)-2)}`)
     })
 
     return uri;
