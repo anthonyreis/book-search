@@ -57,6 +57,8 @@ app.get('/searchBook', async (req, res) => {
         ]
         
         res.render('books', {
+            title: 'Search Books',
+            name: 'Anthony Reis',
             data: response
         })
         //res.send(response)
@@ -65,10 +67,10 @@ app.get('/searchBook', async (req, res) => {
     }
 })
 
-app.get('/searchMany', async (req, res) => {
+app.get('/searchPdf', async (req, res) => {
     try {
-        const response = await searchMany(req.query.bookInfo);
-       
+        const response = await searchBook(req.query.bookInfo);
+
         res.send(response)
     } catch (err) {
         res.send(err)

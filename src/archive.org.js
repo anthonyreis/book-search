@@ -5,9 +5,12 @@ const url = 'https://archive.org/'
 
 const bookLink = (bookHTML) => {
     var matches;        
-    var re = /data-id="/g;
+    var re = /<a href="\/details/g;
     var pos = new Array();
     var uri = new Array();
+    var img = new Array();
+    var title = new Array();
+    var books = new Array();
 
     while (matches = re.exec(bookHTML)) {
         if (matches.index === re.lastIndex)
@@ -17,12 +20,28 @@ const bookLink = (bookHTML) => {
     }
 
     pos.forEach((item) => {
-        var pos1 = bookHTML.indexOf('"', item-1)
-        var pos2 = bookHTML.indexOf('"', pos1+2)
-        uri.push(`${url}details/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
+        var pos1 = bookHTML.indexOf('/', item-1)
+        var pos2 = bookHTML.indexOf('"', pos1)
+        var pos3 = bookHTML.indexOf('"', pos2+2)
+        var pos4 = bookHTML.indexOf('"', pos3+2)
+        var book = {
+            bookLink: `${url}details/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`,
+            imgSrc: `${url}services/img/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`,
+            bookName: bookHTML.substr(pos3+1, (pos4 - pos3)-1),
+        }
+        books.push(book)
+        /*uri.push(`${url}details/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
+        img.push(`${url}services/img/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`)
+        title.push(bookHTML.substr(pos3+1, (pos4 - pos3)-1))*/
     })
+    
+    /*return {
+        uri,
+        img,
+        title
+    }*/
 
-    return uri;
+    return books
 }
 
 const searchPdf = async (bookInformation) => {
@@ -34,14 +53,14 @@ const searchPdf = async (bookInformation) => {
         const lineEnd = response.data.lastIndexOf('data-mediatype="texts"')
         const newResponse = response.data.substr(lineBegin, (lineEnd - lineBegin));
     
-        const uri = bookLink(newResponse)
-
+        const info = bookLink(newResponse)
+        
         return {
             status_code: 200,
-            data: uri,
+            data: info,
         };
 
-        fs.writeFile('newBook.html', newResponse)
+        //fs.writeFile('newBook.html', newResponse)
     } catch (err) {
         console.log(err)
         return {

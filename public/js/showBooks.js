@@ -22,9 +22,11 @@ main.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading...'
 
-    clearElements('link')
+    clearElements('album py-5 bg-light')
+    
+    window.location = "/searchBook?bookInfo=" + bookInfo;
 
-    fetch('/searchBook?bookInfo='+ bookInfo).then((response) => {
+    /*fetch('/searchBook?bookInfo='+ bookInfo).then((response) => {
         response.json().then((data) => {
             var urls = String(data).split(',')
             if (data.error){
@@ -34,7 +36,7 @@ main.addEventListener('submit', (e) => {
                 main.appendChild(par)
             } else {
                 urls.forEach((item) => {
-                    var div = document.createElement('div');
+                    /*var div = document.createElement('div');
                     div.className = 'row';
                     var div2 = document.createElement('div');
                     div2.className = 'col-md-4';
@@ -71,17 +73,17 @@ main.addEventListener('submit', (e) => {
                     div3.appendChild(div4)
                     div2.appendChild(div3)
                     div.appendChild(div2)
-                    /*var par = document.createElement('a')
+                    var par = document.createElement('a')
                     par.className = 'link'
                     par.href = item
                     par.innerText = item
                     par.target = '_blank'
                     main.appendChild(par)
                     var par = document.createElement('br')
-                    main.appendChild(par)*/
+                    main.appendChild(par)
                 })
                 messageOne.textContent = ''
             }
         })
-    })
+    })*/
 })
