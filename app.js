@@ -55,7 +55,11 @@ app.get('/searchBook', async (req, res) => {
         const response = [
             ...response1.data,...response2.data, ...response3.data, ...response4.data
         ]
-        res.send(response)
+        
+        res.render('books', {
+            data: response
+        })
+        //res.send(response)
     } catch (err) {
         res.send(err)
     }

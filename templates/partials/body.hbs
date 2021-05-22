@@ -1,4 +1,4 @@
-<body>   
+<body>
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
             <div class="container">
@@ -37,14 +37,14 @@
     {{> header}}
 
     <div class="main-content">
-            <p>Use this site to search for free books!</p>
+        <p>Use this site to search for free books!</p>
 
-            <form>
-                <input placeholder="The theory of everything">
-                <button>Search</button>
-            </form>
+        <form>
+            <input placeholder="The theory of everything">
+            <button>Search</button>
+        </form>
 
-            <p id="message-1"></p>
+        <p id="message-1"></p>
     </div>
 
     <main role="main">
@@ -63,29 +63,27 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="../imagens/carlsagan.png">
-                            <div class="card-body">
-                                <h5 class="card-title">Carl Sagan</h5>
-                                <p class="card-text">Carl Edward Sagan foi um cientista, físico, biólogo, astrônomo,
-                                    astrofísico, cosmólogo, escritor e divulgador científico.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="sagan.html" class="btn btn-primary my-2">Completo</a>
+                {{#each data}}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" src={{this.imgSrc}}>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.bookName}}</h5>
+                                    <p class="card-text">{{this.bookDescription}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href={{this.bookLink}} class="btn btn-primary my-2">Completo</a>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {{/each}}
             </div>
         </div>
         {{> footer}}
-
     </main>
-    <script src="/js/showBooks.js"></script>
+    <!--<script src="/js/showBooks.js"></script> -->
 </body>

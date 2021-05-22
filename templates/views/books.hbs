@@ -1,89 +1,17 @@
-<body>
-    <div class="main-content">
-            <p>Use this site to search for free books!</p>
-
-            <form>
-                <input placeholder="The theory of everything">
-                <button>Search</button>
-            </form>
-
-            <p id="message-1"></p>
-    </div>   
-    <header>
-        <div class="collapse bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-white">SOBRE</h4>
-                        <p class="text-muted">Um astrônomo é um cientista que estuda corpos celestes como planetas,
-                            estrelas e galáxias. São responsáveis pela observação do universo. Para isso, utilizam
-                            diversos equipamentos, como os telescópios e câmeras, além de fazerem uso da computação para
-                            auxiliar no estudo do universo.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <svg class="icon icon-earth mr-1 mt-1">
-                        <use xlink:href="#icon-earth">
-                            <symbol id="icon-earth" viewBox="0 0 32 32">
-                                <path
-                                    d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 30c-1.967 0-3.84-0.407-5.538-1.139l7.286-8.197c0.163-0.183 0.253-0.419 0.253-0.664v-3c0-0.552-0.448-1-1-1-3.531 0-7.256-3.671-7.293-3.707-0.188-0.188-0.442-0.293-0.707-0.293h-4c-0.552 0-1 0.448-1 1v6c0 0.379 0.214 0.725 0.553 0.894l3.447 1.724v5.871c-3.627-2.53-6-6.732-6-11.489 0-2.147 0.484-4.181 1.348-6h3.652c0.265 0 0.52-0.105 0.707-0.293l4-4c0.188-0.188 0.293-0.442 0.293-0.707v-2.419c1.268-0.377 2.61-0.581 4-0.581 2.2 0 4.281 0.508 6.134 1.412-0.13 0.109-0.256 0.224-0.376 0.345-1.133 1.133-1.757 2.64-1.757 4.243s0.624 3.109 1.757 4.243c1.139 1.139 2.663 1.758 4.239 1.758 0.099 0 0.198-0.002 0.297-0.007 0.432 1.619 1.211 5.833-0.263 11.635-0.014 0.055-0.022 0.109-0.026 0.163-2.541 2.596-6.084 4.208-10.004 4.208z">
-                                </path>
-                            </symbol>
-                        </use>
-                    </svg>
-                    <strong>Books</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main role="main">
-
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Books</h1>
-                <p class="lead text-muted text-justify">Um astrônomo é um cientista que estuda corpos celestes como
-                    planetas, estrelas e galáxias. São responsáveis pela observação do universo. Para isso, utilizam
-                    diversos equipamentos, como os telescópios e câmeras, além de fazerem uso da computação para
-                    auxiliar no estudo do universo. Eles gastam a maior parte de seu tempo trabalhando em pesquisas,
-                    apesar de frequentemente terem outras funções como ensino, construção de instrumentos, e ajudando na
-                    operação de um observatório.</p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="../imagens/carlsagan.png">
-                            <div class="card-body">
-                                <h5 class="card-title">Carl Sagan</h5>
-                                <p class="card-text">Carl Edward Sagan foi um cientista, físico, biólogo, astrônomo,
-                                    astrofísico, cosmólogo, escritor e divulgador científico.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="sagan.html" class="btn btn-primary my-2">Completo</a>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{>footer}}
-
-    </main>
-    <script src="/js/showBooks.js"></script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Search</title>
+        <link rel="icon" href="/img/book.png" />
+        <meta charset="utf-8">
+        <link rel = "shortcut icon" type = "imagem/x-icon" href = "../img/book.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/books.css">
+        <link rel="stylesheet" type="text/css" href="/css/icon.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    </head>
+    {{> body}}
+</html>
