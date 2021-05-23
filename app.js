@@ -6,6 +6,7 @@ const searchBook = require('./src/free-ebooks.net');
 const searchArchive = require('./src/bookboon.com');
 const searchPdf = require('./src/archive.org');
 const searchMany = require('./src/manybooks.net');
+const searchPdfBooks = require('./src/pdfbooksworld.com');
 const searchBible = require('./src/searchBible');
 const bibleBooks = require('./src/allBooksBible');
 
@@ -52,8 +53,9 @@ app.get('/searchBook', async (req, res) => {
         const response2 = await searchArchive(req.query.bookInfo);
         const response3 = await searchPdf(req.query.bookInfo);
         const response4 = await searchMany(req.query.bookInfo);
+        const response5 = await searchPdfBooks(req.query.bookInfo);
         const response = [
-            ...response1.data,...response2.data, ...response3.data, ...response4.data
+            ...response1.data,...response2.data, ...response3.data, ...response4.data, ...response5.data
         ]
         
         res.render('books', {
@@ -67,9 +69,9 @@ app.get('/searchBook', async (req, res) => {
     }
 })
 
-app.get('/searchPdf', async (req, res) => {
+app.get('/searchPdfBooks', async (req, res) => {
     try {
-        const response = await searchBook(req.query.bookInfo);
+        const response = await searchPdfBooks(req.query.bookInfo);
 
         res.send(response)
     } catch (err) {
