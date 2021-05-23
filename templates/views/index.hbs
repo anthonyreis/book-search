@@ -26,14 +26,21 @@
     {{> header}}
 
     <div class="main-content">
-        <p>Use this site to search for free books!</p>
-
         <form>
-            <input placeholder="The theory of everything">
-            <button>Search</button>
+            <div class="d-flex flex-row-reverse align-items-center">
+                <div class="col-sm-4 col-md-4">
+                    <label for="inputBook" class="form-label">Use this site to search for free books!</label>
+                    <input class="p-2" type="text" placeholder="The theory of everything" class="form-control"
+                        id="inputBook">
+                    <button class="p-2" type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse align-items-center">
+                <div class="col-sm-4 col-md-4">
+                   <p id="message-1"></p>
+                </div>
+            </div>
         </form>
-
-        <p id="message-1"></p>
     </div>
     <script src="/js/showBooks.js"></script>
 </body>

@@ -2,38 +2,42 @@
     {{> header}}
 
     <div class="main-content">
-        <p>Use this site to search for free books!</p>
-
         <form>
-            <input placeholder="The theory of everything">
-            <button>Search</button>
+            <div class="d-flex flex-row-reverse align-items-center">
+                <div class="col-sm-4 col-md-4">
+                    <label for="inputBook" class="form-label">Use this site to search for free books!</label>
+                    <input class="p-2" type="text" placeholder="The theory of everything" class="form-control"
+                        id="inputBook">
+                    <button class="p-2" type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <div class="d-flex flex-row-reverse align-items-center">
+                <div class="col-sm-4 col-md-4">
+                    <p id="message-1"></p>
+                </div>
+            </div>
         </form>
-
-        <p id="message-1"></p>
     </div>
 
     <main role="main">
-        <div class="album py-5 bg-light">
-            <div class="container">
-                {{#each data}}
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src={{this.imgSrc}}>
-                            <div class="card-body">
-                                <h5 class="card-title">{{this.bookName}}</h5>
-                                <!--<p class="card-text">{{this.bookDescription}}</p> -->
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href={{this.bookLink}} class="btn btn-primary my-2">Completo</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        {{#each data}}
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src={{this.imgSrc}} width="200px" height="300px" alt="book cover">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.bookName}}</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><a href={{this.bookLink}} class="btn btn-primary my-2">Download</a></p>
                     </div>
                 </div>
-                {{/each}}
             </div>
+        </div>
+        {{/each}}
+        </div>
         </div>
     </main>
     {{> footer}}

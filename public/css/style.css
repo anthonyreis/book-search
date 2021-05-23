@@ -1,7 +1,7 @@
 body {
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
-    max-width: 650px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0 16px;
     display: flex;
@@ -17,6 +17,7 @@ footer {
 }
 
 header {
+    display: block;
     margin: 16px 0 48px 0;
 }
 
@@ -25,9 +26,9 @@ h1 {
     margin-bottom: 16px;
 }
 
-header a {
+header a.menuOpt {
     color: #888888;
-    margin-right: 16px;
+    margin-left: 60px;
     text-decoration: none;
 }
 
@@ -37,6 +38,11 @@ header a {
 
 .main-content {
     flex-grow: 1;
+}
+
+#bookCover {
+    height: 200px;
+    width: 200px;
 }
 
 input {
