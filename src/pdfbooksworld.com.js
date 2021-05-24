@@ -19,17 +19,17 @@ const bookLink = (bookHTML) => {
 
 const searchPdfBooks = async (bookInformation) => {
     try {
-        fullUrl = `${url}&q=${bookInformation}&safe=active&cse_tok=AJvRUv2HySV3GBauHB72CmeS-Ger:1621750035916&exp=csqr,cc&callback=google.search.cse.api12745`;
+        fullUrl = `${url}&q=${bookInformation}&safe=active&cse_tok=AJvRUv1X2jWR8U2QZmhsFzvsnAlX:1621862549043&exp=csqr,cc&callback=google.search.cse.api10905`;
         const response = await axios.get(fullUrl);
         
         const lineBegin = response.data.search('{')
         const newResponse = response.data.substr(lineBegin, (response.data.length - lineBegin) -2);
-    
+        
         const info = bookLink(newResponse)
         
         return {
             status_code: 200,
-            data: info,
+            data: info || [],
         };
 
         //fs.writeFile('newBook1.json', newResponse)
@@ -38,7 +38,7 @@ const searchPdfBooks = async (bookInformation) => {
         return {
             status_code: 500,
             msg: err || 'Houve um problema ao processar a sua requisição',
-            data: {},
+            data: [],
         };
     }
 }
