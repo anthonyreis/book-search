@@ -3,7 +3,7 @@
 
     <div class="main-content">
         <form>
-            <div class="d-flex flex-row-reverse align-items-center">
+            <div class="d-flex flex-row-reverse align-items-left">
                 <div class="col-sm-4 col-md-4">
                     <label for="inputBook" class="form-label">Use this site to search for free books!</label>
                     <input class="p-2" type="text" placeholder="The theory of everything" class="form-control"
@@ -20,24 +20,19 @@
     </div>
 
     <main role="main">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
         {{#each data}}
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src={{this.imgSrc}} width="200px" height="300px" alt="book cover">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{this.bookName}}</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><a href={{this.bookLink}} class="btn btn-primary my-2">Download</a></p>
-                    </div>
+        <div class="col-4">
+            <div class="card">
+                <img src="{{this.imgSrc}}" width="150px" height="330px" class="card-img-top" alt="book cover">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.bookName}}</h5>
+                    <p class="card-text">Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder</p>
+                   <p class="card-text"><a href={{this.bookLink}} class="btn btn-primary my-2">Download</a></p>
                 </div>
             </div>
         </div>
         {{/each}}
-        </div>
         </div>
     </main>
     {{> footer}}
