@@ -28,22 +28,25 @@ app.use(express.static(publicDirectoryPath))
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'Search Books',
-        name: 'Anthony Reis'
+        name: 'Anthony Reis',
+        year: '2021'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'Search Books',
-        name: 'Anthony Reis'
+        title: 'About',
+        name: 'Anthony Reis',
+        year: '2021'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'Search Books',
+        title: 'Help',
         name: 'Anthony Reis',
-        email: 'matheus.anthony1@gmail.com'
+        email: 'matheus.anthony1@gmail.com',
+        year: '2021'
     })
 })
 
@@ -61,6 +64,7 @@ app.get('/searchBook', async (req, res) => {
         res.render('books', {
             title: 'Search Books',
             name: 'Anthony Reis',
+            year: '2021',
             data: response
         })
         //res.send(response)

@@ -1,3 +1,8 @@
+@font-face {
+    font-family:calavera;
+    src: url(/fonts/calavera.ttf);
+}
+
 body {
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
@@ -24,6 +29,12 @@ header {
 h1 {
     font-size: 64px;
     margin-bottom: 16px;
+}
+
+header strong#title a {
+    margin-left: -30px;
+    text-decoration: none;
+    color: white;
 }
 
 header a.menuOpt {

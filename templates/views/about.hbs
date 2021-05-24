@@ -2,8 +2,7 @@
 <html>
 
 <head>
-    <title>About</title>
-    <title>Book Search</title>
+    <title>{{title}}</title>
     <link rel="icon" href="/img/book.png" />
     <meta charset="utf-8">
     <link rel="shortcut icon" type="imagem/x-icon" href="../img/book.png" />
@@ -26,11 +25,33 @@
 <body>
     <div class="main-content">
         {{>header}}
-        <p>I am a Computer Science student, currently on the last period of college. Front-end developement
-            is not something I really like, so thats why this website looks kinda meh.
-        </p>
-        <p>This site was created as a personal project just for practicing.</p>
-        <img class="portrait" src="/img/perfil.jpeg">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col-4">
+                <div class="card">
+                    <img src="/img/perfil.jpeg" width="150px" height="330px" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">About me</h5>
+                        <p class="card-text">I am a Computer Science student, currently on the last period of college.
+                            Front-end developement
+                            is not something I really like, so thats why this website looks kinda meh.</p>
+                        <p class="card-text"><small class="text-muted">This site was created as a personal project just
+                                for practicing. I do not use it for commercial purposes.</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+           <div class="col-4">
+                <div class="card">
+                    <img src="/img/logo.png" width="150px" height="330px" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">About the page</h5>
+                        <p class="card-text">This website was created as a personal project, just as manners of practicing what i've been learning. And how does it works ? It's simple, it just searchs other websites that provide free ebooks, and compile their results.</p>
+                        <p class="card-text"><small class="text-muted">This site was created as a personal project just
+                                for practicing. I do not use it for commercial purposes.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     {{>footer}}
