@@ -61,14 +61,20 @@ const searchArchive = async (bookInformation) => {
         const lineBegin = response.data.search('<div class="search-results__item"');
         const lineEnd = response.data.lastIndexOf('<button');
         const newResponse = response.data.substr(lineBegin, (lineEnd - lineBegin));
-    
-        const info = bookLink(newResponse);
 
-        return {
-            status_code: 200,
-            data: info,
-        };
+        if (newResponse == []){
+            return {
+                status_code: 404,
+                data: [],
+            };
+        } else {
+            const info = bookLink(newResponse)
 
+            return {
+                status_code: 200,
+                data: info,
+            };
+        }
         //fs.writeFile('newBook1.html', newResponse)
     } catch (err) {
         return {

@@ -38,10 +38,15 @@ const bookLink = (bookHTML) => {
         var pos2 = bookHTML.indexOf('"', pos1+2)
         var pos3 = bookHTML.indexOf('alt="', pos2+2)
         var pos4 = bookHTML.indexOf('"', pos3+5)
+        var pos5 = bookHTML.indexOf('<div class="col-sm-12 padIt">', pos4)
+        var pos6 = bookHTML.indexOf('">', pos5+30)
+        var pos7 = bookHTML.indexOf('</a>', pos6)
+       
         book.push({
             bookLink: uri[index],
             imgSrc: `${url}${bookHTML.substr(pos1+2, (pos2 - pos1)-2)}`,
-            bookName: `${bookHTML.substr(pos3+5, (pos4 - pos3)-5)}`
+            bookName: `${bookHTML.substr(pos3+5, (pos4 - pos3)-5)}`,
+            author: `${bookHTML.substr(pos6+2, (pos7 - pos6)-2)}`
         })
     })
     
@@ -56,13 +61,20 @@ const searchBook = async (bookInformation) => {
         const lineBegin = response.data.search('<div class="col-sm-4 tac">')
         const lineEnd = response.data.lastIndexOf('3"></div>')
         const newResponse = response.data.substr(lineBegin, (lineEnd - lineBegin) + 9);
-    
-        const info = bookLink(newResponse)
-        
-        return {
-            status_code: 200,
-            data: info,
-        };
+
+        if (newResponse == []){
+            return {
+                status_code: 404,
+                data: [],
+            };
+        } else {
+            const info = bookLink(newResponse)
+
+            return {
+                status_code: 200,
+                data: info,
+            };
+        }
 
         //fs.writeFile('newBook.html', newResponse)
     } catch (err) {

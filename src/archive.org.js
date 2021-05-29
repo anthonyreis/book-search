@@ -20,10 +20,15 @@ const bookLink = (bookHTML) => {
         var pos2 = bookHTML.indexOf('"', pos1)
         var pos3 = bookHTML.indexOf('"', pos2+2)
         var pos4 = bookHTML.indexOf('"', pos3+2)
+        var pos5 = bookHTML.indexOf('<span class="byv"', pos4)
+        var pos6 = bookHTML.indexOf('title="', pos5)
+        var pos7 = bookHTML.indexOf('"', pos6+7)
+       
         var book = {
             bookLink: `${url}details/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`,
             imgSrc: `${url}services/img/${bookHTML.substr(pos1+1, (pos2 - pos1)-1)}`,
             bookName: bookHTML.substr(pos3+1, (pos4 - pos3)-1),
+            author: bookHTML.substr(pos6+7, (pos7 - pos6)-7),
         }
         books.push(book)
     })
@@ -39,14 +44,20 @@ const searchPdf = async (bookInformation) => {
         const lineBegin = response.data.search('<div class="item-ia" data-id="')
         const lineEnd = response.data.lastIndexOf('data-mediatype="texts"')
         const newResponse = response.data.substr(lineBegin, (lineEnd - lineBegin));
-    
-        const info = bookLink(newResponse)
-        
-        return {
-            status_code: 200,
-            data: info,
-        };
+            
+        if (newResponse == []){
+            return {
+                status_code: 404,
+                data: [],
+            };
+        } else {
+            const info = bookLink(newResponse)
 
+            return {
+                status_code: 200,
+                data: info,
+            };
+        }
         //fs.writeFile('newBook.html', newResponse)
     } catch (err) {
         console.log(err)

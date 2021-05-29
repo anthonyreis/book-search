@@ -70,6 +70,7 @@ app.get('/searchBook', async (req, res) => {
             title: 'Search Books',
             name: 'Anthony Reis',
             year: '2021',
+            searchValue: req.query.bookInfo,
             data: response
         })
         //res.send(response)

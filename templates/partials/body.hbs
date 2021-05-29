@@ -20,19 +20,22 @@
     </div>
 
     <main role="main">
+        <p style="font-weight: bold; margin-left: 45%;">Results for {{searchValue}}</p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-        {{#each data}}
-        <div class="col-4">
-            <div class="card">
-                <img src="{{this.imgSrc}}" width="150px" height="330px" class="card-img-top" alt="book cover">
-                <div class="card-body">
-                    <h5 class="card-title">{{this.bookName}}</h5>
-                    <p class="card-text">Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder</p>
-                   <p class="card-text"><a href={{this.bookLink}} class="btn btn-primary my-2">Download</a></p>
+            {{#each data}}
+            <div class="col-4">
+                <div class="card">
+                    <img src="{{this.imgSrc}}" width="150px" height="330px" class="card-img-top" alt="book cover">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.bookName}}</h5>
+                        <p class="card-text">Author: {{author}}</p>
+                        <p class="card-text">Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                            Placeholder Placeholder Placeholder</p>
+                        <p class="card-text"><a href={{this.bookLink}} target="_blank" class="btn btn-primary my-2">Download</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        {{/each}}
+            {{/each}}
         </div>
     </main>
     {{> footer}}
